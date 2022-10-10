@@ -1,0 +1,1 @@
+an sible-playbook -i hosts nginx.yml
