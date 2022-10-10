@@ -1,1 +1,4 @@
+[webserver]
 172.31.18.12
+[local]
+localhost ansible_connection=local
