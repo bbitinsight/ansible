@@ -1,0 +1,19 @@
+---
+- hosts: all
+  tasks:
+  - name: set repo
+    apt_repository:
+      repo: ppa:nginx/stable
+  - name: install tree package
+    apt:
+      name: tree
+      state: latest
+  - name: create dir
+    file:
+      path: /home/ubuntu/abc
+      state: directory
+  - name: Copy file with owner and permissions
+    copy:
+      src: abc.txt
+      dest: /home/ubuntu/abc/abc.txt
+

@@ -1,0 +1,26 @@
+---
+- name: set repo
+  apt_repository:
+    repo: ppa:nginx/stable
+- name: install nginx package
+  apt:
+    name: "{{ packagename }}"
+    state: latest
+- name: create tutorial dir
+  file:
+    path: /var/www/tutorial
+    state: directory
+- name: Copy file with owner and permissions
+  copy:
+    src: index.html
+    dest: /var/www/tutorial/index.html
+  notify: restart service nginx
+- name: copy tutorial file
+  copy:
+    src: tutorial
+    dest: /etc/nginx/sites-enabled/tutorial
+  notify: restart service nginx
+- name: Start service nginx, if not started
+  service:
+    name: "{{ packagename }}"
+    state: started

@@ -1,0 +1,8 @@
+---
+- name: Restart a container
+  docker_container:
+    name: jen
+    image: jenkins/jenkins:lts
+    state: started
+    ports:
+     - "8080:8080"
